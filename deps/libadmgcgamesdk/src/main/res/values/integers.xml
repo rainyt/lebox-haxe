@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="anim_shake_frame_duration">50</integer>
+    <integer name="anim_upgrade_frame_duration">50</integer>
+    <integer name="anim_redpacket_counter_duration">1000</integer>
+    <integer name="anim_bumb_duration">75</integer>
+    <integer name="anim_game_duration">83</integer>
+</resources>

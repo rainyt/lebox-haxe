@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="zygame.baseframe.kengsdk"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <application>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name="zygame.activitys.DexActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.IntroductoryPagesActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/kengsdk_android_p" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.VideoStartActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/kengsdk_android_p" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.AuthenticationActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/kengsdk_android_p" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.GameStartActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/kengsdk_android_p" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.CommentViewActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:theme="@style/kengsdk_android_p_half_translucent" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.EditActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:theme="@style/kengsdk_android_p_translucent" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.OrderSystemActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.MoreGameActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:theme="@style/AlertDialogStyle" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.NoticeAcyivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:theme="@style/AlertDialogStyle" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.PayOrderIDExchangeActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:theme="@style/AlertDialogStyle" >
+        </activity>
+        <activity
+            android:name="zygame.activitys.WebViewActivity"
+            android:configChanges="mcc|mnc|orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <provider
+            android:name="com.download.library.DownloadFileProvider"
+            android:authorities="${applicationId}.DownloadFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/download_files_public" />
+        </provider>
+
+        <receiver
+            android:name="com.download.library.NotificationCancelReceiver"
+            android:exported="false" >
+        </receiver>
+    </application>
+
+</manifest>

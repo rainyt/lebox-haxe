@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lLayout_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/zygame_dialog_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/black2"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/black2"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edit_msg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/zygame_dialog_edittext"
+        android:cursorVisible="false"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        android:gravity="center"
+        android:hint="在此输入兑换码"
+        android:inputType="number"
+        android:lineSpacingMultiplier="1.2"
+        android:maxLength="15"
+        android:textColor="@color/black2"
+        android:textSize="16sp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+        android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+        android:visibility="visible" >
+
+        <zygame.layout.FlowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
+
+            <Button
+                android:id="@+id/comment_log"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="log输出"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/get_appid"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="获取appid"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/change_float"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_bule"
+                android:text="更改位置"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/show_auth"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="实名认证"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/show_healthytime1"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="时间段"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/show_healthytime2"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="时长1"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/show_healthytime3"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="时长2"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/pay_btn"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="支付功能"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/pay_btntest"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="测试支付"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/pay_moni"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="模拟支付"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/initad"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="当前渠道"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shenhe"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="审核状态"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/sdklist"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="SDK列表"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/showinter"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示插屏"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shoevideo"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示视频"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shoebanner"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示横幅"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/closebanner"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="关闭横幅"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shownative"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示原生"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/closenative"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="关闭原生"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/servertime"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="服务器时间"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/showexchangecode"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="打开兑换码"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/cheakAdPos"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="广告可用性"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/paycodes"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="计费点信息"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/adParam"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="广告参数"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/sdkVersion"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="SDK版本"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/dialogclose"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_bule"
+                android:text="关闭弹窗"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/dialogclosebtu"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_bule"
+                android:text="关闭测试面板入口"
+                android:textColor="@color/white" />
+        </zygame.layout.FlowLayout>
+    </ScrollView>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:divider="#33333333"
+        android:dividerHeight="0.6dp"
+        android:fadeScrollbars="false"
+        android:listSelector="#00000000"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+        android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+        android:visibility="visible" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_neg"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/zygame_alert_dialog_left_selector"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!--
+             <ImageView
+            android:id="@+id/img_line"
+            android:layout_width="0.5dp"
+            android:layout_height="43dp"
+            android:background="@color/line_default_color" />
+        -->
+
+        <Button
+            android:id="@+id/btn_pos"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/zygame_alert_dialog_right_selector_green"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!--
+         <Button
+                android:id="@+id/comment_log"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="log输出"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/get_appid"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="获取appid"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/comment_btn"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="评论功能"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/show_auth"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="实名认证"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/show_healthytime1"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="时间段"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/show_healthytime2"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="时长"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/pay_btn"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="支付功能"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/pay_btntest"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="测试支付"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/pay_moni"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="模拟支付"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/change_float"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_bule"
+                android:text="更改位置"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/ext_call"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="插件方法"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/initad"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="当前渠道"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/showinter"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示插屏"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shoevideo"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示视频"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shoebanner"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示横幅"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/closebanner"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="关闭横幅"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/shownative"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示原生"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/closenative"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="关闭原生"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/moregame_btu"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="更多游戏"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/gg"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示公告"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/payorder"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="订单列表"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/webview"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="WebView"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/tosi"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="吐司测试"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/shenhe"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="审核状态"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/servertime"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="服务器时间"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/showexchangecode"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="打开兑换码"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/showalertdialog01"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="确认框01"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/showalertdialog02"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="确认框02"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/cheakupdate"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="检测更新"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/setNickName"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="设置用户名"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/cheakAdPos"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="广告可用性"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/cheakLiuHai"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="是否刘海屏"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/tjq"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="推荐墙内容"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/appStoreDownload"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="商店下载"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/cheakPhoneDebug"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="是否测试机"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/paycodes"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="计费点信息"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/cheakApp"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="检查应用"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/openApp"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="打开应用"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/clearAdCount"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="展示次数清0"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/recomRun"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="点击推荐墙"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/downloadApk"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="下载安装包"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/clearApk"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="清理安装包"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/listviewDialog"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="列表弹窗"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/sdklist"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="SDK列表"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/adParam"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="广告参数"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/sdkVersion"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/zygame_alert_dialog_right_selector_green"
+                android:text="SDK版本"
+                android:textColor="@color/white" />
+    -->
+
+</LinearLayout>

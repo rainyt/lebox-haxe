@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/commentview_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/comment_item_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ksdk_personal_touxiang0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/commentlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/comment_item_icon" >
+
+                <TextView
+                    android:id="@+id/comment_item_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="5dp"
+                    android:text="史小坑"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+                <!--
+                     <ImageView
+                    android:id="@+id/comment_item_sex"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignLeft="@+id/comment_item_username"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/zygame_girl" />
+                -->
+
+                <TextView
+                    android:id="@+id/comment_item_usercomment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="25dp"
+                    android:text="史小坑系列超过3亿次安装，强大的粉丝基础！"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/comment_item_bannerad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone" >
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/listad_adview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/listad_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ksdk_personal_touxiang0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/comment_item_icon" >
+
+                        <TextView
+                            android:id="@+id/listad_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="5dp"
+                            android:text="广告标题"
+                            android:textColor="#000000"
+                            android:textSize="13sp" />
+
+                        <ImageView
+                            android:id="@+id/listad_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/zygame_testbg1" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp" >
+
+            <ImageButton
+                android:id="@+id/comment_item_zan"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/zygame_cv_2" />
+
+            <TextView
+                android:id="@+id/comment_item_zannum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="0" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

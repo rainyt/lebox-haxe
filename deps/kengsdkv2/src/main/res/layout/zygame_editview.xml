@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/zygame_editbgview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+
+    <RelativeLayout
+        android:id="@+id/zygame_editactivityview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/editbg" >
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/editbg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black3" >
+
+        <EditText
+            android:id="@+id/zygame_editview"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/zygame_editviewbg"
+            android:paddingBottom="5dp"
+            android:paddingLeft="8dp"
+            android:singleLine="true"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

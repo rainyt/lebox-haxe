@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ipk.xd.mgcbox"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="auto"
+    android:versionCode="22"
+    android:versionName="1.0.0">
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <!--	<uses-sdk  android:targetSdkVersion="28"/>-->
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/icon"
+        android:label="Lebox盒子版"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:replace="android:label,android:networkSecurityConfig">
+
+        <!-- 渠道自带的微信分享集成 -->
+        <activity
+            android:name="${applicationId}.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:launchMode="singleTask"/>
+
+        <activity
+            android:name="MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
+            android:label="Lebox盒子版"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.imgFullScreen"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="tv.ouya.intent.category.GAME" />
+
+            </intent-filter>
+
+        </activity>
+
+        <!-- KengSDKv2版本的测试应用ID -->
+        <meta-data
+            android:name="KENG_APPID"
+            android:value="39ca709a89" />
+        <!-- KengSDKv2版本仍然支持KENG_CHANNEL参数 -->
+        <meta-data
+            android:name="KENG_CHANNEL"
+            android:value="mgcbox" />
+
+        <meta-data
+            android:name="TALKINGDATA_APPID"
+            android:value="E58F6FD272DC4414907ADC0C8C4A7C78" />
+
+    </application>
+
+</manifest>

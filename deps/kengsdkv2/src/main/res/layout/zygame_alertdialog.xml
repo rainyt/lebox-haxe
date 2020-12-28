@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lLayout_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/zygame_dialog_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/black2"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/black2"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edit_msg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/zygame_dialog_edittext"
+        android:cursorVisible="false"
+        android:gravity="center"
+        android:hint="在此输入兑换码"
+        android:lineSpacingMultiplier="1.2"
+        android:maxLength="15"
+        android:textColor="@color/black2"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/dialog_Authentication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/authid_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="根据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》要求，请进行实名认证"
+            android:textColor="@color/black2"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/dialog_Authid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authid_text"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:text="身份证号"
+                android:textColor="@color/black2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/authid_edit"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/zygame_dialog_edittext"
+                android:cursorVisible="true"
+                android:digits="1234567890X"
+                android:hint="输入15或18位身份证号码"
+                android:inputType="number"
+                android:maxLength="18"
+                android:textColor="@color/black2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/authid_edit2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/zygame_dialog_edittext"
+                android:cursorVisible="true"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+                android:hint="请输入账号"
+                android:textColor="@color/black2"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dialog_Authname_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authname_text"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:text="姓名"
+                android:textColor="@color/black2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/authname_edit"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/zygame_dialog_edittext"
+                android:cursorVisible="true"
+                android:hint="请输入姓名"
+                android:textColor="@color/black2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/authname_edit2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/zygame_dialog_edittext"
+                android:cursorVisible="true"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:textColor="@color/black2"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/dialog_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="20dp"
+        android:overScrollMode="never"
+        android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/scroll_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black2"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/dialog_searchlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/dialog_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="2"
+            android:background="@drawable/zygame_dialog_edittext"
+            android:cursorVisible="false"
+            android:gravity="center"
+            android:hint="请输入筛选关键字"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLength="15"
+            android:textColor="@color/black2"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/dialog_searchbtulayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/dialog_searchbtu"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zygame_alert_dialog_left_selector"
+                android:text="筛选"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/dialog_deletelogs"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/zygame_alert_dialog_left_selector"
+                android:text="清除log"
+                android:textColor="@color/error"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_loglist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/dialog_logverbose"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="verbose"
+            android:textColor="@color/verbose"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/dialog_logwarn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="warn"
+            android:textColor="@color/warn"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/dialog_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="error"
+            android:textColor="@color/error"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialog_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:background="#E5E5E5"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:divider="#33333333"
+        android:dividerHeight="0.6dp"
+        android:fadeScrollbars="false"
+        android:listSelector="#00000000"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+        android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+        android:visibility="visible" >
+    </ListView>
+
+    <ListView
+        android:id="@+id/listview2"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:divider="#33333333"
+        android:dividerHeight="0.6dp"
+        android:fadeScrollbars="false"
+        android:listSelector="#00000000"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+        android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:visibility="gone" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_neg"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/zygame_alert_dialog_left_selector"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!--
+             <ImageView
+            android:id="@+id/img_line"
+            android:layout_width="0.5dp"
+            android:layout_height="43dp"
+            android:background="@color/line_default_color" />
+        -->
+
+        <Button
+            android:id="@+id/btn_pos"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/zygame_alert_dialog_right_selector_green"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

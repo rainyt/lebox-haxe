@@ -1,0 +1,79 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <!-- 全面屏显示配置，不透明 -->
+    <style name="kengsdk_android_p" parent="android:Theme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/alpha_background</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- <item name="android:windowAnimationStyle">@style/activityAnimation</item> -->
+        <item name="android:windowTranslucentStatus"> true </item>
+    </style>
+
+    <!-- 全面屏显示配置，透明 -->
+    <style name="kengsdk_android_p_translucent" parent="android:Theme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/alpha_background</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- <item name="android:windowAnimationStyle">@style/activityAnimation</item> -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus"> true </item>
+    </style>
+    
+    <!-- 全面屏显示配置，半透明 -->
+    <style name="kengsdk_android_p_half_translucent" parent="android:Theme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/alpha_background1</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- <item name="android:windowAnimationStyle">@style/activityAnimation</item> -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus"> true </item>
+    </style>
+
+    <style name="activityAnimation" parent="@android:style/Animation.Translucent">
+        <item name="android:activityOpenEnterAnimation">@anim/alpha_anim_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/alpha_anim</item>
+        <item name="android:activityCloseEnterAnimation">@anim/alpha_anim_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/alpha_anim</item>
+        <item name="android:taskOpenEnterAnimation">@anim/alpha_anim_in</item>
+        <item name="android:taskOpenExitAnimation">@anim/alpha_anim</item>
+        <item name="android:taskCloseEnterAnimation">@anim/alpha_anim_in</item>
+        <item name="android:taskCloseExitAnimation">@anim/alpha_anim</item>
+    </style>
+
+    <!-- 自定义AlertDialog -->
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="AppSplash" parent="@android:Theme">
+        <item name="android:windowBackground">@drawable/zygame_start_page</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent_background">#50000000</color>
+    <color name="dex_background">#ffffffff</color>
+    <color name="black">#FF0000</color>
+    <color name="black3">#efefef</color>
+    <color name="alpha_background">#00000000</color>
+    <color name="alpha_background1">#50000000</color>
+    <color name="black2">#000000</color>
+    <color name="line_default_color">#e5e5e5</color>
+    <color name="list_view_item_org">#f8f8f8</color>
+    <color name="list_view_item_white">#ffffff</color>
+    <color name="background_tab_pressed">#e5e5e5</color>
+    <color name="action_sheet_blue">#037BFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="page_other">#80ffffff</color>
+    <color name="grean">#43c01a</color>
+    <color name="verbose">#BBBBBB</color>
+    <color name="warn">#BBBB23</color>
+    <color name="error">#FF0006</color>
+
+</resources>

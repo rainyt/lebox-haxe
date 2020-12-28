@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <WebView
+        android:id="@+id/v_a_e_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/v_a_e_backImgBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@null"
+        android:contentDescription="@null"
+        android:scaleType="fitStart"
+        android:src="@drawable/zygame_webview_close_button" />
+
+    <ProgressBar
+        android:id="@+id/v_a_e_progressBar"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="0dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="21" />
+
+</FrameLayout>

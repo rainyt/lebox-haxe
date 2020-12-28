@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">小岛求生记-盒子版</string>
+    <string name="open_page_for_result">openPageForResult示例</string>
+    <string name="set_result">返回页面结果</string>
+
+    <string name="lebox_wechat_recharge">兑换</string>
+    <string name="lebox_joinwechat_recharge_hint">进群，领码，兑奖励</string>
+
+    <string name="lebox_info_dialog_title">温馨提示</string>
+    <string name="lebox_retry">重试</string>
+    <string name="lebox_input_dialog_title">编辑</string>
+    <string name="lebox_web_dialog_title">协议</string>
+    <string name="from_album">从相册选择</string>
+    <string name="from_camera">拍照</string>
+    <string name="lebox_set_portrait_failed">设置头像失败, 是否重试?</string>
+    <string name="lebox_get_task_list_failed">获取任务列表失败</string>
+    <string name="lebox_get_task_status_failed">获取任务状态失败</string>
+    <string name="lebox_get_news_category_failed">获取新闻分类失败</string>
+    <string name="shake_time_used_out">今日摇一摇机会已用完</string>
+    <string name="obtain_ad_failed">什么都没摇到</string>
+    <string name="hbrain_cooling">请等待冷却完成</string>
+    <string name="hbrain_times_used_out">今日红包雨次数已用完</string>
+    <string name="hbrain_rest_times_format">今日免费%d次</string>
+    <string name="shake_nothing">什么都没摇到，请稍后再试</string>
+
+    <string-array name="find_tab">
+        <item>推荐</item>
+        <item>关注</item>
+        <item>圈子</item>
+    </string-array>
+
+    <string name="continue_text">继续下载</string>
+    <string name="start_text">下载游戏</string>
+    <string name="pending_text">等待</string>
+    <string name="install_text">安装游戏</string>
+    <string name="pause_text">暂停</string>
+    <string name="retry_text">重试下载</string>
+    <string name="open_text">开始游戏</string>
+
+    <string name="feedback_hint">请写下您的意见...</string>
+
+    <string name="link_user_agreement"><u>用户协议</u></string>
+    <string name="link_privacy"><u>隐私协议</u></string>
+
+</resources>

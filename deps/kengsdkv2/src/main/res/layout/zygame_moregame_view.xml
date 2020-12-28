@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/moregame_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:background="@drawable/zygame_dialog_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/zygame_testnullicon"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:text="更多游戏"
+            android:textColor="@color/black2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/moregame_view_closebtu"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:background="@drawable/zygame_common_closebtn"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loopswitch_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:fitsSystemWindows="true"
+        android:visibility="gone" >
+
+        <zygame.autolooppictrue.AutoSwitchView
+            android:id="@+id/loopswitch"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" >
+        </zygame.autolooppictrue.AutoSwitchView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/moregame_image_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#E5E5E5" />
+
+    <LinearLayout
+        android:id="@+id/moregame_headlist"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/zygame_moregame_keng"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/zygame_testicon1" />
+
+            <TextView
+                android:id="@+id/zygame_textJP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:text="精品推荐"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!--
+             <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="12dp"
+            android:background="#E5E5E5" />
+        -->
+
+        <LinearLayout
+            android:id="@+id/zygame_moregame_baoxiao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/zygame_testicon2" />
+
+            <TextView
+                android:id="@+id/zygame_textXZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:text="下载榜单"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!--
+             <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="12dp"
+            android:background="#E5E5E5" />
+        -->
+
+        <LinearLayout
+            android:id="@+id/zygame_moregame_otherkeng"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/zygame_testicon3" />
+
+            <TextView
+                android:id="@+id/zygame_textWF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:text="小坑外番"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/moregame_image_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#E5E5E5" />
+
+    <ImageView
+        android:id="@+id/moregame_tips1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/zygame_tips"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/moregame_listviewalllist"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/moregame_listview1"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:divider="@drawable/zygame_listview_divider"
+            android:dividerHeight="0.6dp"
+            android:fadeScrollbars="false"
+            android:listSelector="#00000000"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarSize="10dp"
+            android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+            android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+            android:visibility="visible" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/moregame_listview2"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:divider="@drawable/zygame_listview_divider"
+            android:dividerHeight="0.6dp"
+            android:fadeScrollbars="false"
+            android:listSelector="#00000000"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarSize="10dp"
+            android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+            android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+            android:visibility="gone" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/moregame_listview3"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:divider="@drawable/zygame_listview_divider"
+            android:dividerHeight="0.6dp"
+            android:fadeScrollbars="false"
+            android:listSelector="#00000000"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarSize="10dp"
+            android:scrollbarThumbVertical="@drawable/zygame_scrollbar_style"
+            android:scrollbarTrackVertical="@drawable/zygame_listview_scrollbar"
+            android:visibility="gone" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>
