@@ -1,0 +1,132 @@
+import groovy.swing.SwingBuilder
+//import java.awt.GridBagLayout;
+//import java.awt.GridBagConstraints;
+//import javax.swing.border.EmptyBorder;
+
+apply plugin: 'com.android.application'
+
+android {
+	compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+	buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+	defaultConfig {
+//		applicationId "com.ipk.xd.mgc"
+//		applicationId "com.ipeak.xdqsj"
+		applicationId "com.ipk.xd.mgcbox"
+		minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+		targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+		versionCode Integer.parseInt(project.VERSION_CODE)
+		versionName project.VERSION_NAME
+		multiDexEnabled true
+		ndk {
+			abiFilters 'armeabi-v7a'
+		}
+
+	}
+
+
+	signingConfigs {
+		release {
+			storeFile file('./key.keystore')
+			storePassword "ipeak1234"
+			keyAlias "fishmaster"
+			keyPassword "ipeak1234"
+		}
+	}
+
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			signingConfig signingConfigs.release
+		}
+		debug {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.release
+		}
+	}
+
+	android.applicationVariants.all { variant ->
+		variant.outputs.all { output ->
+
+			if (outputFileName != null && outputFileName.endsWith('.apk')) {
+				outputFileName =  "SxkLive-GameBox-" + android.defaultConfig.applicationId + "-mgc-" + project.VERSION_CODE + "-" + releaseTime() + ".apk"
+			}
+		}
+	}
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+}
+
+def releaseTime() {
+	return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+dependencies {
+	api fileTree(dir: 'libs', include: ['*.jar'])
+	api project(':deps:extension-api')
+	api project(':deps:kengsdkv2')
+	api project(':deps:libextalkingdatasdk')
+	api project(':deps:libadmgcgamesdk')
+//	api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+	implementation 'com.android.support:support-v4:27.1.1'
+}
+
+def getPassword(message) {
+	def password = '';
+	if (System.console() == null) {
+		new SwingBuilder().edt {
+			dialog(
+				title: 'Enter password',
+				alwaysOnTop: true,
+				size: [350, 150],
+				resizable: false,
+				locationRelativeTo: null,
+				pack: true,
+				modal: true,
+				show: true
+			) {
+				lookAndFeel('system')
+
+//				panel(border: new EmptyBorder(10, 10, 10, 10)) {
+//					gridBagLayout()
+//					def gbc = new GridBagConstraints();
+//
+//					gbc.gridx = 0
+//					gbc.gridy = 0
+//					gbc.fill = GridBagConstraints.HORIZONTAL
+//					gbc.insets = [0, 0, 10, 0]
+//					label(
+//						text: '<html>' +
+//						'<body style="width: 350px">' +
+//						message +
+//						'</body>' +
+//						'</html>',
+//						constraints: gbc)
+//
+//					gbc.gridy = 1
+//					input = passwordField(constraints: gbc)
+//
+//					gbc.gridy = 2
+//					gbc.fill = GridBagConstraints.NONE
+//					gbc.insets = [0, 0, 0, 0]
+//					gbc.ipadx = 50
+//					button = button(
+//						defaultButton: true,
+//						text: 'OK',
+//						actionPerformed: {
+//							password = input.password
+//							dispose()
+//						},
+//						constraints: gbc)
+//				}
+			}
+		}
+	} else {
+		password = System.console().readPassword(message)
+	}
+	return new String(password)
+}

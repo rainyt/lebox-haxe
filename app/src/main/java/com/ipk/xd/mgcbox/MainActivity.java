@@ -110,10 +110,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
 
     private static final int REQUEST_CODE_WRITE_PERMISSION = 2003;
 
-//    public static String APP_ID = "wx0b4af81fcb0bd3a6";
-//
-//    public static String APP_SECRET = "fc4b35c54c23985b7d829ee7670bfcc9";
-
     RadioButton tabGameCenterBtn;
     RadioButton tabRankBtn;
     RadioButton tabChallengeBtn;

@@ -1,0 +1,5 @@
+include ':app'
+include ':deps:extension-api'
+include ':deps:kengsdkv2'
+include ':deps:libadmgcgamesdk'
+include ':deps:libextalkingdatasdk'

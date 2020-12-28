@@ -258,7 +258,7 @@
         <!-- 以下数据请自行设置 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5fe00a8d345b8b53f573ca80" />
+            android:value="需要填入" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="kx100_mgc_demo" />
@@ -267,14 +267,14 @@
             android:value="true" />
         <meta-data
             android:name="MGC_WECHAT_APPID"
-            android:value="wx0b4af81fcb0bd3a6" />
+            android:value="需要填入" />
         <meta-data
             android:name="MGC_WECHAT_APPSECRET"
-            android:value="fc4b35c54c23985b7d829ee7670bfcc9" />
+            android:value="需要填入" />
 
         <meta-data
             android:name="MGC_APPID"
-            android:value="1001989" />
+            android:value="需要填入" />
         <meta-data
             android:name="MGC_TEST_ENV"
             android:value="false" />

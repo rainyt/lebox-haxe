@@ -60,7 +60,7 @@
         <!-- KengSDKv2版本的测试应用ID -->
         <meta-data
             android:name="KENG_APPID"
-            android:value="39ca709a89" />
+            android:value="需要填入" />
         <!-- KengSDKv2版本仍然支持KENG_CHANNEL参数 -->
         <meta-data
             android:name="KENG_CHANNEL"
@@ -68,7 +68,7 @@
 
         <meta-data
             android:name="TALKINGDATA_APPID"
-            android:value="E58F6FD272DC4414907ADC0C8C4A7C78" />
+            android:value="需要填入" />
 
     </application>
 

@@ -1,0 +1,27 @@
+<ZBox>
+    <VBox gap="5" scaleX="0.5" scaleY="0.5" left="5" top="5">
+        <ZButton src="DrawUIAtlas:pan"/>
+        <ZButton src="DrawUIAtlas:xiangpicha"/>
+        <ZButton src="DrawUIAtlas:lajitong"/>
+        <ZButton src="DrawUIAtlas:save"/>
+    </VBox>
+    <ImageBatchs id="colors" visible="false" left="80" top="10" src="DrawUIAtlas" scaleX="0.5" scaleY="0.5">
+        <VBBox gap="5">
+            <HBBox gap="5">
+                <BImage src="DrawUIAtlas:color" id="1"/>
+                <BImage src="DrawUIAtlas:color" id="2"/>
+                <BImage src="DrawUIAtlas:color" id="3"/>
+            </HBBox>
+            <HBBox gap="5">
+                <BImage src="DrawUIAtlas:color" id="4"/>
+                <BImage src="DrawUIAtlas:color" id="5"/>
+                <BImage src="DrawUIAtlas:color" id="6"/>
+            </HBBox>
+            <HBBox gap="5">
+                <BImage src="DrawUIAtlas:color" id="7"/>
+                <BImage src="DrawUIAtlas:color" id="8"/>
+                <BImage src="DrawUIAtlas:color" id="9"/>
+            </HBBox>
+        </VBBox>
+    </ImageBatchs>
+</ZBox>
