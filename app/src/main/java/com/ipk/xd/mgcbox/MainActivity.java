@@ -146,15 +146,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
 
     private static final String BUNDLE_FRAGMENTS_KEY = "android:support:fragments";
 
-
-    ILetoPlayedDurationListener playedDurationListener;
-
-    ILetoAnswerCallBack _anserCallBack;
-    ILetoIdiomCallBack _idiomCallBack;
-    ILetoOpenRedPacketCallBack _openRedPacketCallBack;
-    ILetoScratchCardCallBack _scratchCardCallBack;
-    ILetoTurntableCallBack _turntableCallBack;
-
     LeBoxTaskManager _taskManager;  //声明变量
 
     @Override
@@ -188,6 +179,9 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
         _fragmentClasses.put(com.mgc.letobox.happy.R.id.tab_category, TabCategoryFragment.class);
         _fragmentClasses.put(com.mgc.letobox.happy.R.id.tab_me, TabMeFragment.class);
         _fragmentClasses.put(com.mgc.letobox.happy.R.id.tab_reward, TabRewardFragment.class);
+
+        // init leto
+        LetoTrace.setDebugMode(true);
 
         // init leto
         Leto.init(this);
@@ -251,25 +245,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
             EventBus.getDefault().register(this);
         }
 
-        playedDurationListener = new ILetoPlayedDurationListener() {
-            @Override
-            public void getPlayedDurations(String gameId, long duration) {
-
-                Log.i(TAG, "gameId: " + gameId + "-------------duration: " + duration);
-                //如果是语聊，则更新到本地
-                if (!TextUtils.isEmpty(gameId) && LetoRewardManager.isChatGame(gameId)) {
-                    LetoRewardManager.updateChatGameProgress(MainActivity.this, duration);
-                }
-
-                reportTaskProgress(duration);
-            }
-        };
-
-        LetoEvents.addLetoPlayedDurationListener(playedDurationListener);
-
-        NewerTaskManager.getNewPlayerTaskList(this, null);
-        NewerTaskManager.getDailyTaskList(this, null);
-
         AdManager.getInstance().getTmTaskList(this);
 
 
@@ -285,8 +260,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
                 AdManager.preloadAd(getApplication());
             }
         }, 2000);
-
-        initRewardListener();
 
 
 //        this.hideBottomUIMenu();
@@ -343,19 +316,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // deliver to api container
         ApiContainer.handleActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == LeBoxConstant.REQUEST_CODE_TASK_INVITE_CODE) {
-            LetoTrace.d("invite code call back: resultCode =" + resultCode);
-            if (resultCode == 1) {
-                reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_BIND_INVITE, 1);
-            }
-
-        } else if (requestCode == LeBoxConstant.REQUEST_CODE_TASK_PHONE_LOGIN) {
-            LetoTrace.d("phone login call back: resultCode =" + resultCode);
-            if (resultCode == 1) {
-                reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_BIND_PHONE, 1);
-            }
-        }
 
         if (_taskManager != null) {
             _taskManager.onActivityResult(requestCode, resultCode, data);
@@ -478,8 +438,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
         if (_taskManager != null) {
             _taskManager.destroy();
         }
-
-        LetoEvents.removeLetoPlayedDurationListener(playedDurationListener);
     }
 
     private void setCustomLogin(){
@@ -580,74 +538,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
     List<Fragment> mFragmentList = new ArrayList<>();
     List<TabBean> mTabBeans = new ArrayList<>();
 
-    public void reportTaskProgress(long progress) {
-        boolean hasNewTask = false;
-        boolean hasDailyTask = false;
-        List<TaskResultBean> taskResultBeans = NewerTaskManager.getCompleteNewerTaskId(this, "", progress);
-        if (taskResultBeans != null && taskResultBeans.size() > 0) {
-            hasNewTask = true;
-        }
-
-        List<TaskResultBean> dailyTaskResultBeans = NewerTaskManager.getCompleteDailyTaskIdOnPlayGame(this, "", progress);
-
-        if (dailyTaskResultBeans != null && dailyTaskResultBeans.size() > 0) {
-            taskResultBeans.addAll(dailyTaskResultBeans);
-            hasDailyTask = true;
-        }
-        if (taskResultBeans != null && taskResultBeans.size() > 0) {
-            showTaskDialog(taskResultBeans, 0, 0);
-        }
-
-        EventBus.getDefault().post(new DailyTaskRefreshEvent());
-    }
-
-    public void reportDailyTaskProgressByTaskType(int taskType, long progress) {
-
-        List<TaskResultBean> taskResultBeans = NewerTaskManager.getCompleteDailyTaskId(this, taskType, "", progress);
-        if (taskResultBeans != null && taskResultBeans.size() > 0) {
-            showTaskDialog(taskResultBeans, 0, 0);
-        }
-
-        EventBus.getDefault().post(new DailyTaskRefreshEvent());
-    }
-
-    Handler mTaskHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-
-            List<TaskResultBean> taskBeans = (List<TaskResultBean>) msg.obj;
-            int pos = msg.arg1;
-            int action = msg.arg2;
-
-            showTaskDialog(taskBeans, pos, action);
-
-        }
-
-    };
-
-
-    private void showTaskDialog(final List<TaskResultBean> taskBeans, final int pos, final int action) {
-        if (this.isFinishing()) {
-            return;
-        }
-
-        MGCDialogUtil.showMGCCoinDialogWithOrderId(this, null, taskBeans.get(pos).getAward_coins(), 1, CoinDialogScene.ROOKIE_TASK,
-                taskBeans.get(pos).getChannel_task_id(), new IMGCCoinDialogListener() {
-                    @Override
-                    public void onExit(boolean video, int coinGot) {
-                        if (taskBeans.size() > pos + 1) {
-                            Message msg = new Message();
-                            msg.obj = taskBeans;
-                            msg.arg1 = pos + 1;
-                            msg.arg2 = action;
-                            mTaskHandler.sendMessage(msg);
-                        }
-                    }
-                });
-    }
-
     boolean isCheckedVersion = false;
 
     private void getVersion() {
@@ -690,9 +580,7 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
             }
         };
         RxVolley.post(LeBoxUtil.getLatestVersion(), httpParamsBuild.getHttpParams(), httpCallbackDecode);
-
     }
-
 
     private void showVersionDialog(final VersionResultBean version) {
 
@@ -760,86 +648,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
             }
         }
     }
-
-    public void initRewardListener() {
-
-        _anserCallBack = new ILetoAnswerCallBack() {
-            @Override
-            public void onAnswer(Context ctx, QaGameRewardBean request) {
-                LetoTrace.d("dati callback");
-                if (request.getIs_correct() == 1) {
-                    reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_REWARD_ANSWER, 1);
-                }
-            }
-        };
-        _idiomCallBack = new ILetoIdiomCallBack() {
-            @Override
-            public void onAnswer(Context ctx, IdiomResultGame request) {
-                LetoTrace.d("idiom callback");
-                if (request.getIs_correct() == 1) {
-                    reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_REWARD_IDIOM, 1);
-                }
-            }
-        };
-        _scratchCardCallBack = new ILetoScratchCardCallBack() {
-            @Override
-            public void onScratch(Context ctx, TurnTableRewardBean request) {
-                LetoTrace.d("scratch callback");
-
-                reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_REWARD_SCRATCH_CARD, 1);
-
-            }
-        };
-        _turntableCallBack = new ILetoTurntableCallBack() {
-            @Override
-            public void onTurntable(Context ctx, TurnTableRewardBean request) {
-                LetoTrace.d("turntable callback");
-                reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_REWARD_TURNTABLE, 1);
-            }
-        };
-        LetoRewardEvents.setAnserCallBack(_anserCallBack);
-        LetoRewardEvents.setScratchCardCallBack(_scratchCardCallBack);
-        LetoRewardEvents.setTurntableCallBack(_turntableCallBack);
-        LetoRewardEvents.setIdiomCallBack(_idiomCallBack);
-
-        LetoEvents.setLetoLoginResultCallback(new ILetoLoginResultCallback() {
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onLoginSuccess(LoginResultBean data) {
-                LetoTrace.d(TAG, "setLetoLoginResultCallback onLoginSuccess...");
-                try {
-                    if (data != null && !LoginManager.isTempAccount(data.getMobile())) {
-                        LetoTrace.d(TAG, "finish bind phone task...");
-                        NewerTaskManager.getUserNewPlayerTaskStatus(MainActivity.this, new HttpCallbackDecode<List<UserTaskStatusResultBean>>(MainActivity.this, null, new TypeToken<List<UserTaskStatusResultBean>>() {
-                        }.getType()) {
-                            @Override
-                            public void onDataSuccess(final List<UserTaskStatusResultBean> data) {
-                                reportDailyTaskProgressByTaskType(LeBoxConstant.LETO_TASK_TYP_BIND_PHONE, 1);
-                            }
-
-                            @Override
-                            public void onFailure(String code, String msg) {
-                                super.onFailure(code, msg);
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                super.onFinish();
-
-                            }
-                        });
-                    }
-                } catch (Throwable e) {
-
-                }
-            }
-        });
-    }
-
 
     private void reportTabClick(int position) {
         GameStatisticManager.statisticGameLog(this, BaseAppUtil.getChannelID(this), StatisticEvent.LETO_BOX_TAB_CLICK.ordinal(), 0, LetoScene.DEFAULT.ordinal(), "" + System.currentTimeMillis(), 0, 0, "", 0, "", "", false, 0, 0, 0, 0, position, 0, 0, "", null);
