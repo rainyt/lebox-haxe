@@ -244,6 +244,9 @@
             android:name="MGC_BOX"
             android:value="true" />
 
+        <meta-data android:name="MGC_LOG"
+            android:value="open" />
+
         <!-- 这些数据一般不用改 -->
         <meta-data
             android:name="MGC_HOME_TAB_ID"

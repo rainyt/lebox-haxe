@@ -1,5 +1,7 @@
 package com.ipk.xd.mgcbox;
 
+import com.ledong.lib.leto.Leto;
+import com.mgc.leto.game.base.trace.LetoTrace;
 import com.mgc.letobox.happy.LetoApplication;
 
 /**
@@ -8,6 +10,10 @@ import com.mgc.letobox.happy.LetoApplication;
 public class MyApplication extends LetoApplication {
     @Override
     public void onCreate() {
+        // init leto
+        LetoTrace.setDebugMode(true);
+        // init leto
+        Leto.init(this);
         super.onCreate();
     }
 }

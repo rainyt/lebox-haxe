@@ -47,15 +47,21 @@
             android:theme="@style/Theme.imgFullScreen"
             android:launchMode="singleTask">
 
-            <intent-filter>
+        </activity>
 
+        <activity
+            android:name="zygame.activitys.StartupPageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="tv.ouya.intent.category.GAME" />
-
             </intent-filter>
-
         </activity>
+
+        <meta-data
+            android:name="KENG_ACTIVITY"
+            android:value="com.ipk.xd.mgcbox.MainActivity" />
 
         <!-- KengSDKv2版本的测试应用ID -->
         <meta-data

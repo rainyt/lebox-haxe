@@ -22,7 +22,6 @@ import android.widget.RadioButton;
 
 import com.google.gson.Gson;
 import com.kymjs.rxvolley.RxVolley;
-import com.ledong.lib.leto.Leto;
 import com.ledong.lib.minigame.bean.TabBean;
 import com.leto.game.base.dialog.PrivacyWebDialog;
 import com.leto.game.base.easypermissions.EasyPermissions;
@@ -157,12 +156,6 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
         _fragmentClasses.put(com.mgc.letobox.happy.R.id.tab_category, TabCategoryFragment.class);
         _fragmentClasses.put(com.mgc.letobox.happy.R.id.tab_me, TabMeFragment.class);
         _fragmentClasses.put(com.mgc.letobox.happy.R.id.tab_reward, TabRewardFragment.class);
-
-        // init leto
-        LetoTrace.setDebugMode(true);
-
-        // init leto
-        Leto.init(this);
 
         // set content view
         setContentView(com.mgc.letobox.happy.R.layout.activity_tab_gamecenter);
