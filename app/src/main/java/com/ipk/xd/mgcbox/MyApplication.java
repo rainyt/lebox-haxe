@@ -10,6 +10,7 @@ import com.mgc.letobox.happy.LetoApplication;
 public class MyApplication extends LetoApplication {
     @Override
     public void onCreate() {
+        LetoCore.useBiddingAdPolicy(true);
         // init leto
         LetoTrace.setDebugMode(true);
         // init leto
