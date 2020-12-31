@@ -129,25 +129,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         _progressBar.setMax((int) totalProgress);
 
         if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
-
-            //无需上报看视频任务
-            BenefitSettings_video_task.VideoReward liveDayVideoReward = RewardVideoManager.getLiveDayVideoReward(_ctx);
-            int videoNumber = liveDayVideoReward.getVideo_num_max() - liveDayVideoReward.getVideo_num_min();
-            String title = String.format("看%d次视频，领0.3元", videoNumber);
-            String message = String.format("累计看%d次激励视频，即可获得3000金币奖励", videoNumber);
-
-            long totalVdeoNumber = RewardVideoManager.getRewardedVideoNumber(_ctx);
-            progress = totalVdeoNumber - liveDayVideoReward.getVideo_num_min();
-            totalProgress = videoNumber;
-            _progressBar.setProgress((int) progress);
-            _progressBar.setMax((int) totalProgress);
-
-            _curProgresslabel.setText(String.valueOf(progress));
-            _totalProgresslabel.setText(String.valueOf(totalProgress));
-
-            _titlelabel.setText(title);
-            _desclabel.setText(message);
-            _coinlabel.setText(String.valueOf(liveDayVideoReward.getReward_coins()));
+            updateRewardVideoUI();
         }
 
         // set tag
@@ -248,33 +230,9 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                                         RewardVideoManager.getRewardedVideoCoin(_ctx, new HttpCallbackDecode<AddCoinResultBean>(_ctx, null) {
                                             @Override
                                             public void onDataSuccess(AddCoinResultBean data) {
-                                                MainHandler.runOnUIThread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        //无需上报看视频任务
-                                                        BenefitSettings_video_task.VideoReward liveDayVideoReward = RewardVideoManager.getLiveDayVideoReward(_ctx);
-                                                        int videoNumber = liveDayVideoReward.getVideo_num_max() - liveDayVideoReward.getVideo_num_min();
-                                                        String title = String.format("看%d次视频，领0.3元", videoNumber);
-                                                        String message = String.format("累计看%d次激励视频，即可获得3000金币奖励", videoNumber);
+                                                updateRewardVideoUI();
 
-                                                        _titlelabel.setText(title);
-
-                                                        _desclabel.setText(message);
-                                                        _coinlabel.setText(String.valueOf(liveDayVideoReward.getReward_coins()));
-
-                                                        long totalVdeoNumber = RewardVideoManager.getRewardedVideoNumber(_ctx);
-                                                        long progress = totalVdeoNumber - liveDayVideoReward.getVideo_num_min();
-                                                        long totalProgress = videoNumber;
-                                                        _progressBar.setProgress((int) progress);
-                                                        _progressBar.setMax((int) totalProgress);
-
-                                                        _curProgresslabel.setText(String.valueOf(progress));
-                                                        _totalProgresslabel.setText(String.valueOf(totalProgress));
-
-
-                                                        EventBus.getDefault().post(new DataRefreshEvent() );
-                                                    }
-                                                });
+                                                EventBus.getDefault().post(new DataRefreshEvent() );
                                             }
 
                                             @Override
@@ -343,5 +301,39 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         result = df.format(num);
 
         return result;
+    }
+
+    private void updateRewardVideoUI(){
+        MainHandler.runOnUIThread(new Runnable() {
+            @Override
+            public void run() {
+                //无需上报看视频任务
+                BenefitSettings_video_task.VideoReward liveDayVideoReward = RewardVideoManager.getLiveDayVideoReward(_ctx);
+                int videoNumber = liveDayVideoReward.getVideo_num_max() - liveDayVideoReward.getVideo_num_min();
+
+                long todayViewVideoNumber = RewardVideoManager.getRewardedVideoNumber(_ctx);
+                long progress = todayViewVideoNumber - liveDayVideoReward.getVideo_num_min();
+                if(liveDayVideoReward.isEnd()){
+                    videoNumber = 30;
+                    progress =  (todayViewVideoNumber - liveDayVideoReward.getVideo_num_min()) % 30;
+                }
+
+                String title = String.format("看%d次视频，领0.3元", videoNumber);
+                String message = String.format("累计看%d次激励视频，即可获得3000金币奖励", videoNumber);
+
+                _titlelabel.setText(title);
+
+                _desclabel.setText(message);
+                _coinlabel.setText(String.valueOf(liveDayVideoReward.getReward_coins()));
+
+
+                long totalProgress = videoNumber;
+                _progressBar.setProgress((int) progress);
+                _progressBar.setMax((int) totalProgress);
+
+                _curProgresslabel.setText(String.valueOf(progress));
+                _totalProgresslabel.setText(String.valueOf(totalProgress));
+            }
+        });
     }
 }
