@@ -12,14 +12,23 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.leto.reward.LetoRewardManager;
+import com.mgc.leto.game.base.event.DataRefreshEvent;
+import com.mgc.leto.game.base.http.HttpCallbackDecode;
 import com.mgc.leto.game.base.login.LoginManager;
+import com.mgc.leto.game.base.mgc.RewardVideoManager;
+import com.mgc.leto.game.base.mgc.bean.AddCoinResultBean;
+import com.mgc.leto.game.base.mgc.bean.BenefitSettings_video_task;
 import com.mgc.leto.game.base.mgc.bean.CoinDialogScene;
 import com.mgc.leto.game.base.mgc.dialog.IMGCCoinDialogListener;
+import com.mgc.leto.game.base.mgc.util.MGCApiUtil;
 import com.mgc.leto.game.base.mgc.util.MGCDialogUtil;
 import com.mgc.leto.game.base.trace.LetoTrace;
 import com.mgc.leto.game.base.utils.ColorUtil;
 import com.mgc.leto.game.base.utils.MResource;
+import com.mgc.leto.game.base.utils.MainHandler;
+import com.mgc.leto.game.base.utils.ToastUtil;
 import com.mgc.leto.game.base.widget.ClickGuard;
 import com.mgc.letobox.happy.LeBoxMobileLoginActivity;
 import com.mgc.letobox.happy.R;
@@ -76,18 +85,6 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
     @Override
     public void onBind(final TaskResultBean model, int position) {
         // label
-
-//        if (model.getFinish_type() == 4) {
-//            _titlelabel.setText(String.format("%s(已完成%d/%d)", model.getTask_title(), model.getProcess(), model.getFinish_level()));
-//        } else if (model.getFinish_type() == 2) {
-//            String progress = convertTimeFormat(model.getProcess());
-//            if (model.getProcess() > model.getFinish_level()) {
-//                progress = convertTimeFormat(model.getFinish_level());
-//            }
-//            _titlelabel.setText(String.format("%s(已玩%s分钟)", model.getTask_title(), progress));
-//        } else {
-//            _titlelabel.setText(model.getTask_title());
-//        }
         _progressLayout.setVisibility(View.VISIBLE);
         if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_REWARD_SCRATCH_CARD) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_scrach_card);
@@ -107,6 +104,10 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_play_game);
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_PLAY_GAME_TIME) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_try_play_game);
+        } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
+            _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
+        } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
+            _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
         }
 
 
@@ -126,6 +127,28 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         _totalProgresslabel.setText(String.valueOf(totalProgress));
         _progressBar.setProgress((int) progress);
         _progressBar.setMax((int) totalProgress);
+
+        if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
+
+            //无需上报看视频任务
+            BenefitSettings_video_task.VideoReward liveDayVideoReward = RewardVideoManager.getLiveDayVideoReward(_ctx);
+            int videoNumber = liveDayVideoReward.getVideo_num_max() - liveDayVideoReward.getVideo_num_min();
+            String title = String.format("看%d次视频，领0.3元", videoNumber);
+            String message = String.format("累计看%d次激励视频，即可获得3000金币奖励", videoNumber);
+
+            long totalVdeoNumber = RewardVideoManager.getRewardedVideoNumber(_ctx);
+            progress = totalVdeoNumber - liveDayVideoReward.getVideo_num_min();
+            totalProgress = videoNumber;
+            _progressBar.setProgress((int) progress);
+            _progressBar.setMax((int) totalProgress);
+
+            _curProgresslabel.setText(String.valueOf(progress));
+            _totalProgresslabel.setText(String.valueOf(totalProgress));
+
+            _titlelabel.setText(title);
+            _desclabel.setText(message);
+            _coinlabel.setText(String.valueOf(liveDayVideoReward.getReward_coins()));
+        }
 
         // set tag
         itemView.setTag(position);
@@ -155,7 +178,6 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                                         if (LetoBoxEvents.getRewardedVideoListener() != null) {
                                             LetoBoxEvents.getRewardedVideoListener().showVideo();
                                         }
-
                                     }
 
                                     @Override
@@ -217,10 +239,62 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                             }
                         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_BIND_INVITE) {
                             FollowInviteCodeActivity.startActivityByRequestCode((Activity) _ctx, LeBoxConstant.REQUEST_CODE_TASK_INVITE_CODE);
+                        } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
+                            if (getRewardAdRequest() != null) {
+                                getRewardAdRequest().requestRewardAd(_ctx, new IRewardAdResult() {
+                                    @Override
+                                    public void onSuccess() {
+
+                                        RewardVideoManager.getRewardedVideoCoin(_ctx, new HttpCallbackDecode<AddCoinResultBean>(_ctx, null) {
+                                            @Override
+                                            public void onDataSuccess(AddCoinResultBean data) {
+                                                MainHandler.runOnUIThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        //无需上报看视频任务
+                                                        BenefitSettings_video_task.VideoReward liveDayVideoReward = RewardVideoManager.getLiveDayVideoReward(_ctx);
+                                                        int videoNumber = liveDayVideoReward.getVideo_num_max() - liveDayVideoReward.getVideo_num_min();
+                                                        String title = String.format("看%d次视频，领0.3元", videoNumber);
+                                                        String message = String.format("累计看%d次激励视频，即可获得3000金币奖励", videoNumber);
+
+                                                        _titlelabel.setText(title);
+
+                                                        _desclabel.setText(message);
+                                                        _coinlabel.setText(String.valueOf(liveDayVideoReward.getReward_coins()));
+
+                                                        long totalVdeoNumber = RewardVideoManager.getRewardedVideoNumber(_ctx);
+                                                        long progress = totalVdeoNumber - liveDayVideoReward.getVideo_num_min();
+                                                        long totalProgress = videoNumber;
+                                                        _progressBar.setProgress((int) progress);
+                                                        _progressBar.setMax((int) totalProgress);
+
+                                                        _curProgresslabel.setText(String.valueOf(progress));
+                                                        _totalProgresslabel.setText(String.valueOf(totalProgress));
+
+
+                                                        EventBus.getDefault().post(new DataRefreshEvent() );
+                                                    }
+                                                });
+                                            }
+
+                                            @Override
+                                            public void onFailure(String code, String msg) {
+                                                super.onFailure(code, msg);
+                                                ToastUtil.s(_ctx, String.format("errCode=%s, errMessage=%s", code, msg));
+                                            }
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onFail(String code, String message) {
+
+                                    }
+                                });
+                            } else {
+                                LetoTrace.d("request ad callback is null");
+                            }
                         } else {
-
                             EventBus.getDefault().post(new TabSwitchEvent(1));
-
                         }
                         return true;
                     }
