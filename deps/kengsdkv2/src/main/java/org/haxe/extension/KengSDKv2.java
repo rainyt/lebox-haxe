@@ -395,13 +395,23 @@ public class KengSDKv2 extends Extension {
 	public static void callExtendsApi(String func,String strings){
 		if("".equals(strings)){
 			String[] args = {};
-			KengSDK.getInstance().getPlugin().callArgs(func, args);
+			KengSDK.getInstance().getPlugin().callStringArgs(func, args);
 		}
 		else
-			KengSDK.getInstance().getPlugin().callArgs(func, strings.split(","));
+			KengSDK.getInstance().getPlugin().callStringArgs(func, strings.split(","));
 	}
 
-
+	/**
+	 * 访问扩展方法，并获得字符串数据
+	 */
+	public static String callExtendsStringValueApi(String func,String strings){
+		if("".equals(strings)){
+			String[] args = {};
+			return KengSDK.getInstance().getPlugin().callStringArgs(func, args);
+		}
+		else
+			return KengSDK.getInstance().getPlugin().callStringArgs(func, strings.split(","));
+	}
 
 	/**
 	 * 游戏胜利统计
