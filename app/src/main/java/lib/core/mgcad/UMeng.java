@@ -85,6 +85,18 @@ public class UMeng extends Plugin {
 				super.onFailure(code, msg);
 			}
 		});
+//		MGCApiUtil.getDrawCashNumber(Utils.getContext(), new ILetoDrawCashNumberListener(){
+//
+//			@Override
+//			public void onSucces(DrawCashNumberResultBean drawCashNumber) {
+//				ZLog.log("get draw cash number: " + drawCashNumber.cash_num);
+//			}
+//
+//			@Override
+//			public void onFail(String code, String message) {
+//				ZLog.log("onFailure:  " + message);
+//			}
+//		});
 	}
 
 }

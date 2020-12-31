@@ -70,16 +70,13 @@ public class SDKStart extends StartAd {
 		_splashAd.onLoad(new LetoAdApi.ILetoAdApiCallback() {
 			@Override
 			public void onApiEvent(JSONObject res) {
-				ZLog.log("梦工厂开屏广告--加载");
+				ZLog.log("梦工厂开屏广告--加载--开始展示");
+				_splashAd.show();
 			}
 		});
 
 		_splashAd.load();
 		mAdListener.onDataResuest();
-
-		ZLog.log("梦工厂开屏广告开始展示");
-		_splashAd.show();
-
 	}
 
 }
