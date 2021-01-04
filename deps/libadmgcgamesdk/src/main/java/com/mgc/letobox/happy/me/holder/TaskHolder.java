@@ -104,7 +104,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_play_game);
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_PLAY_GAME_TIME) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_try_play_game);
-        } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
+        } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
@@ -114,7 +114,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         _titlelabel.setText(model.getTask_title());
 
         _desclabel.setText(model.getTask_desc());
-        _coinlabel.setText("+" + model.getAward_coins());
+
 
         long progress = model.getProcess();
         long totalProgress = model.getFinish_level();
@@ -129,7 +129,13 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         _progressBar.setMax((int) totalProgress);
 
         if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
+            LetoTrace.d(String.format("reward coin = %d", model.getAward_coins()));
             updateRewardVideoUI();
+            _coinlabel.setTextSize(12);
+            _coinlabel.setText(String.format("+%d/次", model.getAward_coins()));
+        }else{
+            _coinlabel.setTextSize(14);
+            _coinlabel.setText(String.valueOf(model.getAward_coins()));
         }
 
         // set tag
@@ -324,7 +330,8 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                 _titlelabel.setText(title);
 
                 _desclabel.setText(message);
-                _coinlabel.setText(String.valueOf(liveDayVideoReward.getReward_coins()));
+                _coinlabel.setText(String.format("+%d/次", liveDayVideoReward.getReward_coins()));
+                _coinlabel.setTextSize(12);
 
 
                 long totalProgress = videoNumber;
