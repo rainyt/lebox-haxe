@@ -131,7 +131,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
             LetoTrace.d(String.format("reward coin = %d", model.getAward_coins()));
             updateRewardVideoUI();
-            _coinlabel.setTextSize(12);
+            _coinlabel.setTextSize(11);
             _coinlabel.setText(String.format("+%d/次", model.getAward_coins()));
         }else{
             _coinlabel.setTextSize(14);
@@ -228,35 +228,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_BIND_INVITE) {
                             FollowInviteCodeActivity.startActivityByRequestCode((Activity) _ctx, LeBoxConstant.REQUEST_CODE_TASK_INVITE_CODE);
                         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
-                            if (getRewardAdRequest() != null) {
-                                getRewardAdRequest().requestRewardAd(_ctx, new IRewardAdResult() {
-                                    @Override
-                                    public void onSuccess() {
-
-                                        RewardVideoManager.getRewardedVideoCoin(_ctx, new HttpCallbackDecode<AddCoinResultBean>(_ctx, null) {
-                                            @Override
-                                            public void onDataSuccess(AddCoinResultBean data) {
-                                                updateRewardVideoUI();
-
-                                                EventBus.getDefault().post(new DataRefreshEvent() );
-                                            }
-
-                                            @Override
-                                            public void onFailure(String code, String msg) {
-                                                super.onFailure(code, msg);
-                                                ToastUtil.s(_ctx, String.format("errCode=%s, errMessage=%s", code, msg));
-                                            }
-                                        });
-                                    }
-
-                                    @Override
-                                    public void onFail(String code, String message) {
-
-                                    }
-                                });
-                            } else {
-                                LetoTrace.d("request ad callback is null");
-                            }
+                            EventBus.getDefault().post(new TabSwitchEvent(1));
                         } else {
                             EventBus.getDefault().post(new TabSwitchEvent(1));
                         }
@@ -325,13 +297,13 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                 }
 
                 String title = String.format("看%d次视频，领0.3元", videoNumber);
-                String message = String.format("累计看%d次激励视频，即可获得3000金币奖励", videoNumber);
+                String message = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
 
                 _titlelabel.setText(title);
 
                 _desclabel.setText(message);
                 _coinlabel.setText(String.format("+%d/次", liveDayVideoReward.getReward_coins()));
-                _coinlabel.setTextSize(12);
+                _coinlabel.setTextSize(11);
 
 
                 long totalProgress = videoNumber;
