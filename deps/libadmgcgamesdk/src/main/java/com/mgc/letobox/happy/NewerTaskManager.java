@@ -72,8 +72,10 @@ public class NewerTaskManager {
                                     progress = (todayViewVideoNumber - liveDayVideoReward.getVideo_num_min()) % 30;
                                 }
 
-                                String title = String.format("看%d次视频，领0.3元", videoNumber);
-                                String message = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
+//                                String title = String.format("看%d次视频，领0.3元", videoNumber);
+//                                String message = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
+                                String message = "";
+                                String title = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
 
                                 taskResultBean.setTask_title(title);
                                 taskResultBean.setTask_desc(message);
@@ -152,8 +154,10 @@ public class NewerTaskManager {
                                             progress = (todayViewVideoNumber - liveDayVideoReward.getVideo_num_min()) % 30;
                                         }
 
-                                        String title = String.format("看%d次视频，领0.3元", videoNumber);
-                                        String message = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
+//                                        String title = String.format("看%d次视频，领0.3元", videoNumber);
+//                                        String message = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
+                                        String message = "";
+                                        String title = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
 
                                         taskResultBean.setTask_title(title);
                                         taskResultBean.setTask_desc(message);

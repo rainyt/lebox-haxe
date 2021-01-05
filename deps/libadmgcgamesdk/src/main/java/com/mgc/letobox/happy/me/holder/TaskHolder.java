@@ -86,6 +86,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
     public void onBind(final TaskResultBean model, int position) {
         // label
         _progressLayout.setVisibility(View.VISIBLE);
+        _desclabel.setVisibility(View.VISIBLE);
         if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_REWARD_SCRATCH_CARD) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_scrach_card);
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_REWARD_ANSWER) {
@@ -108,6 +109,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
+            _desclabel.setVisibility(View.GONE);
         }
 
 
@@ -296,11 +298,11 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
                     progress =  (todayViewVideoNumber - liveDayVideoReward.getVideo_num_min()) % 30;
                 }
 
-                String title = String.format("看%d次视频，领0.3元", videoNumber);
-                String message = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
+                String message = "";
+                String title = String.format("进入任意小游戏中领取%d个游戏红包，提现0.3元", videoNumber);
 
                 _titlelabel.setText(title);
-
+                _desclabel.setVisibility(View.GONE);
                 _desclabel.setText(message);
                 _coinlabel.setText(String.format("+%d/次", liveDayVideoReward.getReward_coins()));
                 _coinlabel.setTextSize(11);
