@@ -1,14 +1,11 @@
 package lib.core.mgcad;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
 
 import com.mgc.leto.game.base.LetoAdApi;
 
-import android.content.Intent;
-import android.os.Handler;
-
-import java.util.Date;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import zygame.core.KengSDK;
 import zygame.interfaces.ActivityLifeCycle;
@@ -53,6 +50,8 @@ public class SDKVideo extends VideoAd implements ActivityLifeCycle {
 			@Override
 			public void onApiEvent(JSONObject res) {
 				videoAd.destroy();
+				// 同步一下视频次数
+				KengSDK.getInstance().getPlugin().call("synchronizeVideoTime");
 				if (res.optBoolean("isEnded")) {
 					ZLog.log("梦工厂视频广告--用户看完了视频");
 					mAdListener.onReward();
