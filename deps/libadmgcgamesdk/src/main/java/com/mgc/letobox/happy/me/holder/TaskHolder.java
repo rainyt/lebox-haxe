@@ -2,8 +2,7 @@ package com.mgc.letobox.happy.me.holder;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Message;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.leto.reward.LetoRewardManager;
-import com.mgc.leto.game.base.event.DataRefreshEvent;
-import com.mgc.leto.game.base.http.HttpCallbackDecode;
 import com.mgc.leto.game.base.login.LoginManager;
 import com.mgc.leto.game.base.mgc.RewardVideoManager;
-import com.mgc.leto.game.base.mgc.bean.AddCoinResultBean;
 import com.mgc.leto.game.base.mgc.bean.BenefitSettings_video_task;
 import com.mgc.leto.game.base.mgc.bean.CoinDialogScene;
 import com.mgc.leto.game.base.mgc.dialog.IMGCCoinDialogListener;
-import com.mgc.leto.game.base.mgc.util.MGCApiUtil;
 import com.mgc.leto.game.base.mgc.util.MGCDialogUtil;
 import com.mgc.leto.game.base.trace.LetoTrace;
 import com.mgc.leto.game.base.utils.ColorUtil;
 import com.mgc.leto.game.base.utils.MResource;
 import com.mgc.leto.game.base.utils.MainHandler;
-import com.mgc.leto.game.base.utils.ToastUtil;
 import com.mgc.leto.game.base.widget.ClickGuard;
 import com.mgc.letobox.happy.LeBoxMobileLoginActivity;
 import com.mgc.letobox.happy.R;
@@ -57,6 +50,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
     private TextView _curProgresslabel;
     private TextView _totalProgresslabel;
     private LinearLayout _progressLayout;
+    private LinearLayout _titleCoinLayout;
 
     Context _ctx;
 
@@ -80,6 +74,7 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         _curProgresslabel = itemView.findViewById(MResource.getIdByName(_ctx, "R.id.leto_tv_progress"));
         _totalProgresslabel = itemView.findViewById(MResource.getIdByName(_ctx, "R.id.leto_tv_total_progress"));
         _progressLayout = itemView.findViewById(MResource.getIdByName(_ctx, "R.id.leto_progress_layout"));
+        _titleCoinLayout = itemView.findViewById(MResource.getIdByName(_ctx, "R.id.title_coin_bar"));
     }
 
     @Override
@@ -87,6 +82,9 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         // label
         _progressLayout.setVisibility(View.VISIBLE);
         _desclabel.setVisibility(View.VISIBLE);
+        _titleCoinLayout.setVisibility(View.VISIBLE);
+        _titlelabel.setSingleLine(true);
+        _titlelabel.setEllipsize(TextUtils.TruncateAt.END);
         if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_REWARD_SCRATCH_CARD) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_scrach_card);
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_REWARD_ANSWER) {
@@ -110,6 +108,8 @@ public class TaskHolder extends CommonViewHolder<TaskResultBean> {
         } else if (model.getFinish_type() == LeBoxConstant.LETO_TASK_TYP_VIEW_VIDEO_NEW) {
             _taskIcon.setImageResource(R.mipmap.leto_reward_task_view_video);
             _desclabel.setVisibility(View.GONE);
+            _titleCoinLayout.setVisibility(View.GONE);
+            _titlelabel.setSingleLine(false);
         }
 
 
