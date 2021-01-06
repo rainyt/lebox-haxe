@@ -214,21 +214,27 @@
                 android:resource="@xml/sigmob_provider_paths" />
         </provider>
 
-        <activity
-            android:name="com.sigmob.sdk.base.common.AdActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.DeviceDefault" />
-
         <!-- lightingbox ad config-->
-<!--        <provider-->
-<!--            android:name="com.wannuosili.sdk.ad.component.WNFileProvider"-->
-<!--            android:authorities="${applicationId}.WNFileProvider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/wn_file_paths" />-->
-<!--        </provider>-->
+        <provider
+            android:name="com.wannuosili.sdk.ad.component.WNFileProvider"
+            android:authorities="${applicationId}.WNFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/wn_file_paths" />
+        </provider>
+
+        <!-- 聚量广告-->
+        <provider
+            android:name="com.uniplay.adsdk.UniPlayFileProvider"
+            android:authorities="${applicationId}.uniplay.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/leto_file_path" />
+        </provider>
 
         <activity
             android:name=".floattools.components.RedPacketSeaActivity"
