@@ -1,5 +1,6 @@
 package lib.core.mgcad;
 
+import com.mgc.leto.game.base.event.DataRefreshEvent;
 import com.mgc.leto.game.base.http.HttpCallbackDecode;
 import com.mgc.leto.game.base.mgc.WithdrawActivity;
 import com.mgc.leto.game.base.mgc.bean.AddCoinResultBean;
@@ -10,6 +11,7 @@ import com.mgc.leto.game.base.mgc.util.MGCApiUtil;
 import com.mgc.letobox.happy.LeBoxLoginActivity;
 import com.umeng.analytics.MobclickAgent;
 
+import org.greenrobot.eventbus.EventBus;
 import org.haxe.extension.Extension;
 
 import zygame.dialog.WebViewAlert;
@@ -47,8 +49,10 @@ public class UMeng extends Plugin {
 		MGCApiUtil.addCoin(Utils.getContext(), Utils.getMetaDataKey("MGC_APPID"),addcoin, "", 50, new HttpCallbackDecode<AddCoinResultBean>(Utils.getContext(), null) {
 			@Override
 			public void onDataSuccess(AddCoinResultBean data) {
-				if(data != null)
-					SharedObject.updateKey("mgc_coin",data.getTotal_coins());
+				if(data != null) {
+					SharedObject.updateKey("mgc_coin", data.getTotal_coins());
+					EventBus.getDefault().post(new DataRefreshEvent());
+				}
 			}
 
 			@Override
