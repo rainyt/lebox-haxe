@@ -79,6 +79,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import zygame.core.KengSDK;
 import zygame.utils.Utils;
 
 public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioGroup.OnCheckedChangeListener, ILetoContainerProvider {
@@ -493,6 +494,7 @@ public class MainActivity extends org.haxe.lime.GameActivity implements MyRadioG
     public void onGameResume() {
         if(mRIndex == R.id.tab_minigame){
             this.resumeNativeThread();
+            KengSDK.getInstance().getPlugin().call("synchronizeCoin");
         }
         else{
             this.pauseNativeThread();
