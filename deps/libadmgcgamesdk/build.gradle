@@ -80,5 +80,8 @@ android {
             all*.exclude group: 'com.squareup.okhttp3', module: 'okhttp'
             all*.exclude group: 'com.google.code.gson'
         }
+
+        //慧聚sdk广告
+        implementation 'com.joomob.android.sdk:common:1.0.9.2' //慧聚SDK
     }
 }
