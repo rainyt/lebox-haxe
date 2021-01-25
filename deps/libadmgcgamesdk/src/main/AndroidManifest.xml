@@ -225,15 +225,15 @@
                 android:resource="@xml/wn_file_paths" />
         </provider>
 
-        <!-- 聚量广告-->
+        <!-- 慧聚广告 此provider 必填,否则无法吊起安装界面,影响收益-->
         <provider
-            android:name="com.uniplay.adsdk.UniPlayFileProvider"
+            android:name="com.joomob.sdk.common.FileProvider"
             android:authorities="${applicationId}.uniplay.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/leto_file_path" />
+                android:resource="@xml/uniplay_file_path" />
         </provider>
 
         <activity
